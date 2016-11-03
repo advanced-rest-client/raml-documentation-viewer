@@ -20,7 +20,9 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
     "paper-tabs": "PolymerElements/paper-tabs#^1.7.0",
-    "iron-pages": "PolymerElements/iron-pages#^1.0.8"
+    "iron-pages": "PolymerElements/iron-pages#^1.0.8",
+    "raml-aware": "advanced-rest-client/raml-aware#^1.0.2",
+    "raml-behaviors": "advanced-rest-client/raml-behaviors#^1.0.1"
   },
   "devDependencies": {
     "iron-component-page": "polymerelements/iron-component-page#1.0.0",
@@ -29,7 +31,8 @@
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
     "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
     "test-fixture": "PolymerElements/test-fixture#^1.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+    "raml-docs-helpers": "advanced-rest-client/raml-docs-helpers#^1.0.1"
   },
   "ignore": [
     "**/.*",

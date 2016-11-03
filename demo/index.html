@@ -13,32 +13,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-
   <title>raml-documentation-viewer demo</title>
-
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-
+  <link rel="import" href="../../raml-docs-helpers/raml-docs-parser.html">
   <link rel="import" href="../raml-documentation-viewer.html">
-
   <style is="custom-style" include="demo-pages-shared-styles">
-
     .vertical-section-container {
       max-width: 600px;
     }
-
   </style>
 </head>
 <body unresolved>
   <div class="vertical-section-container centered">
     <h3>The `raml-documentation-viewer`</h3>
-    <demo-snippet>
-      <template>
-        <raml-documentation-viewer></raml-documentation-viewer>
-      </template>
-    </demo-snippet>
+    <raml-docs-parser></raml-docs-parser>
+    <raml-documentation-viewer hidden></raml-documentation-viewer>
   </div>
+  <script>
+  document.querySelector('raml-docs-parser').addEventListener('raml-ready', function(e) {
+    var el = document.querySelector('raml-documentation-viewer');
+    el.raml = e.detail.raml.specification;
+    el.removeAttribute('hidden');
+  });
+  </script>
 </body>
 </html>

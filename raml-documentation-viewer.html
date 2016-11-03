@@ -12,8 +12,7 @@ License for the specific language governing permissions and limitations under
 the License.
 
 USED BOWER LINKS (dev only):
-raml-aware
-raml-behaviors
+raml-documentation-panel
 -->
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../raml-aware/raml-aware.html">
@@ -21,6 +20,8 @@ raml-behaviors
 <link rel="import" href="../paper-tabs/paper-tabs.html">
 <link rel="import" href="../paper-tabs/paper-tab.html">
 <link rel="import" href="../iron-pages/iron-pages.html">
+<link rel="import" href="../raml-summary-view/raml-summary-view.html">
+
 <!--
 # `<raml-documentation-viewer>`
 A documentation viewer for RAML file. This is the main element to be used to display the
@@ -66,7 +67,7 @@ Custom property | Description | Default
       display: block;
     }
     </style>
-    <raml-documentation-basic raml="[[raml]]"></raml-documentation-basic>
+    <raml-summary-view raml="[[raml]]"></raml-summary-view>
     <paper-tabs selected="{{selectedPage}}">
       <paper-tab>API STRUCTURE</paper-tab>
       <paper-tab>DOCUMENTATION</paper-tab>
@@ -76,11 +77,9 @@ Custom property | Description | Default
       <!-- Tree viewer for endpoints and methods -->
       <raml-api-structure raml="[[raml]]" selected-path="{{selectedPath}}"></raml-api-structure>
       <!-- The documentation panel -->
-      <raml-documentation-details raml="[[selectedObject]]"></raml-documentation-details>
+      <raml-documentation-panel raml="[[selectedObject]]"></raml-documentation-panel>
       <raml-types-viewer raml="[[raml]]"></raml-types-viewer>
     </iron-pages>
-    <!-- This must be put into the `raml-documentation-details` element. -->
-    <raml-path-to-object raml="[[raml]]" selected-path="{{selectedPath}}" selected-object="{{selectedObject}}"></raml-path-to-object>
     <template is="dom-if" if="[[hasAware]]" restamp="true">
       <raml-aware raml="[[raml]]" scope="[[aware]]"></raml-aware>
     </template>
