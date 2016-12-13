@@ -23,7 +23,8 @@
     "iron-pages": "PolymerElements/iron-pages#^1.0.8",
     "raml-aware": "advanced-rest-client/raml-aware#^1.0.2",
     "raml-behaviors": "advanced-rest-client/raml-behaviors#^1.0.1",
-    "raml-summary-view": "advanced-rest-client/raml-summary-view#^1.0.2"
+    "raml-summary-view": "advanced-rest-client/raml-summary-view#^1.0.2",
+    "raml-documentation-panel": "advanced-rest-client/raml-documentation-panel#^1.0.4"
   },
   "devDependencies": {
     "iron-component-page": "polymerelements/iron-component-page#1.0.0",
@@ -33,7 +34,7 @@
     "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
     "test-fixture": "PolymerElements/test-fixture#^1.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
-    "raml-docs-helpers": "advanced-rest-client/raml-docs-helpers#^1.0.1"
+    "arc-demo-helpers": "advanced-rest-client/arc-demo-helpers#^1.0.5"
   },
   "ignore": [
     "**/.*",

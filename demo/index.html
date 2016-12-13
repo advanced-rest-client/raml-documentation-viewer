@@ -15,28 +15,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <title>raml-documentation-viewer demo</title>
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../../raml-docs-helpers/raml-docs-parser.html">
+  <link rel="import" href="../../arc-demo-helpers/raml-demo-page.html">
+  <link rel="import" href="../../font-roboto/roboto.html">
   <link rel="import" href="../raml-documentation-viewer.html">
-  <style is="custom-style" include="demo-pages-shared-styles">
-    .vertical-section-container {
-      max-width: 600px;
-    }
+  <style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'Noto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
   </style>
 </head>
 <body unresolved>
-  <div class="vertical-section-container centered">
-    <h3>The `raml-documentation-viewer`</h3>
-    <raml-docs-parser></raml-docs-parser>
-    <raml-documentation-viewer hidden></raml-documentation-viewer>
-  </div>
-  <script>
-  document.querySelector('raml-docs-parser').addEventListener('raml-ready', function(e) {
-    var el = document.querySelector('raml-documentation-viewer');
-    el.raml = e.detail.raml.specification;
-    el.removeAttribute('hidden');
-  });
-  </script>
+  <template is="dom-bind" id="app">
+    <raml-demo-page raml="{{raml}}" no-selector>
+      <h1>The raml-headers-form element</h1>
+      <div main>
+        <raml-documentation-viewer raml="[[raml]]" auto-hide></raml-documentation-viewer>
+      </div>
+    </raml-demo-page>
+  </template>
 </body>
 </html>
