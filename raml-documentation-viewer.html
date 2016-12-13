@@ -71,6 +71,12 @@ Custom property | Description | Default
      :host {
       display: block;
     }
+
+    raml-summary-view {
+      padding: 16px;
+      @apply(--raml-summary-view);
+    }
+
     </style>
     <raml-summary-view raml="[[raml]]" narrow="{{narrow}}" narrow-width="{{narrowWidth}}"></raml-summary-view>
     <!-- <paper-tabs selected="{{selectedPage}}">
