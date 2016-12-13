@@ -25,16 +25,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <test-fixture id="basic">
       <template>
-        <raml-documentation-viewer></raml-documentation-viewer>
+        <raml-documentation-viewer aware="raml"></raml-documentation-viewer>
       </template>
     </test-fixture>
 
     <script>
-    /* global suite, test, fixture, assert */
+    /* global suite, test, fixture, assert, forceXIfStamp */
     suite('basic', function() {
-      test('`raml-documentation-viewer` should be initialized', function() {
-        var element = fixture('basic');
-        assert.equal(element.isAttached, true, 'element.isAttached equals true');
+      var element;
+      setup(function() {
+        element = fixture('basic');
+      });
+      test('hasAware is set to true', function() {
+        forceXIfStamp(element);
+        assert.equal(element.hasAware, true);
+      });
+      test('path is not selected', function() {
+        forceXIfStamp(element);
+        assert.notOk(element.selectedPath, true);
+        assert.notOk(element.ramlHasSelected, true);
       });
     });
     </script>
