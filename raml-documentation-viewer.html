@@ -17,10 +17,11 @@ raml-documentation-panel
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../raml-aware/raml-aware.html">
 <link rel="import" href="../raml-behaviors/raml-behavior.html">
-<link rel="import" href="../paper-tabs/paper-tabs.html">
+<!-- <link rel="import" href="../paper-tabs/paper-tabs.html">
 <link rel="import" href="../paper-tabs/paper-tab.html">
-<link rel="import" href="../iron-pages/iron-pages.html">
+<link rel="import" href="../iron-pages/iron-pages.html"> -->
 <link rel="import" href="../raml-summary-view/raml-summary-view.html">
+<link rel="import" href="../raml-documentation-panel/raml-documentation-panel.html">
 
 <!--
 # `<raml-documentation-viewer>`
@@ -37,7 +38,7 @@ Passing a RAML data into the element can be done by using the `raml` property. I
 way of passing the data.
 
 ```
-<raml-documentation-viewer raml="[[ramd]]"></raml-documentation-viewer>
+<raml-documentation-viewer raml="[[raml]]"></raml-documentation-viewer>
 ```
 
 This element also uses the `<raml-aware>` element. It helps to set RAML data globally for the
@@ -48,6 +49,10 @@ to set `aware` attribute with the name of `<raml-aware>`'s scope attribute.
 <raml-documentation-viewer aware="doc-raml"></raml-documentation-viewer>
 <raml-aware raml="{{raml}}" scope="doc-raml"></raml-aware>
 ```
+
+## Roadmap
+This element will be updated in near future. The view will support tabs where the user can switch
+between the documentation and the types view. Further tabs are possible.
 
 ### Styling
 `<raml-documentation-viewer>` provides the following custom properties and mixins for styling:
@@ -67,21 +72,17 @@ Custom property | Description | Default
       display: block;
     }
     </style>
-    <raml-summary-view raml="[[raml]]"></raml-summary-view>
-    <paper-tabs selected="{{selectedPage}}">
-      <paper-tab>API STRUCTURE</paper-tab>
+    <raml-summary-view raml="[[raml]]" narrow="{{narrow}}" narrow-width="{{narrowWidth}}"></raml-summary-view>
+    <!-- <paper-tabs selected="{{selectedPage}}">
       <paper-tab>DOCUMENTATION</paper-tab>
       <paper-tab>TYPES</paper-tab>
-    </paper-tabs>
-    <iron-pages selected="{{selectedPage}}">
-      <!-- Tree viewer for endpoints and methods -->
-      <raml-api-structure raml="[[raml]]" selected-path="{{selectedPath}}"></raml-api-structure>
-      <!-- The documentation panel -->
-      <raml-documentation-panel raml="[[selectedObject]]"></raml-documentation-panel>
-      <raml-types-viewer raml="[[raml]]"></raml-types-viewer>
-    </iron-pages>
+    </paper-tabs> -->
+    <!-- <iron-pages selected="{{selectedPage}}"> -->
+      <raml-documentation-panel raml="[[raml]]" selected-path="{{selectedPath}}" has-selection="[[ramlHasSelected]]" aware="raml" narrow="{{narrow}}" narrow-width="{{narrowWidth}}"></raml-documentation-panel>
+      <!-- <raml-types-viewer raml="[[raml]]"></raml-types-viewer> -->
+    <!-- </iron-pages> -->
     <template is="dom-if" if="[[hasAware]]" restamp="true">
-      <raml-aware raml="[[raml]]" scope="[[aware]]"></raml-aware>
+      <raml-aware raml="{{raml}}" scope="[[aware]]"></raml-aware>
     </template>
   </template>
   <script>
@@ -106,11 +107,11 @@ Custom property | Description | Default
         value: false,
         computed: '_computeHasAware(aware)'
       },
-      // Selected page of the documentation details.
-      selectedPage: {
-        type: Number,
-        value: 0
-      },
+      // // Selected page of the documentation details.
+      // selectedPage: {
+      //   type: Number,
+      //   value: 0
+      // },
       /**
        * Selected path for the documentation panel and for the api structure viewer.
        * It's a path in the JSON structure to the method / endpoint.
@@ -126,12 +127,26 @@ Custom property | Description | Default
         type: String,
         notify: true
       },
+
+      // Set by the child element. True whem the user selected any of the RAML data.
+      ramlHasSelected: {
+        type:  Boolean,
+        notify: true
+      },
       /**
-       * Will contain RAML's resource or method definition for `selectedPath`.
-       * The information is computed by the `raml-path-to-object` element.
+       * If set it will renders the view in the narrow layout.
        */
-      selectedObject: {
-        type: Object,
+      narrow: {
+        type: Boolean,
+        notify: true
+      },
+      /**
+       * A width below which the `narrow` property will be set to true.
+       * Thids element do not controls child elements and they are have own resizable behavior.
+       * It just pasess the `narrow` and `narrowWidth` to child elements.
+       */
+      narrowWidth: {
+        type: String,
         notify: true
       }
     },
