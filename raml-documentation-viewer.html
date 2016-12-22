@@ -28,17 +28,25 @@ raml-documentation-panel
 A documentation viewer for RAML file. This is the main element to be used to display the
 documentation from a RAML file.
 
-**Note: This element do not parse RAML file. It accepts parsed JSON output from the RAML JS parser**
+*Note: This element do not parse RAML file. It accepts parsed JSON output from the RAML JS parser*
 
 This element accepts RAML parser's json output. It can be produced using the `<raml-js-parser>`
 element from ARC's catalog.
+
+The computation of the selected object should be performed outside the element.
+Use the `raml-path-selector` with `raml-path-to-object` to get the data
+structure that this element can work with.
 
 ### Example
 Passing a RAML data into the element can be done by using the `raml` property. It's a recommended
 way of passing the data.
 
 ```
-<raml-documentation-viewer raml="[[raml]]"></raml-documentation-viewer>
+<raml-path-to-object selected-object="{{obj}}" ...></raml-path-to-object>
+<raml-documentation-viewer
+  raml="[[raml]]"
+  selected-object="[[obj]]"
+  selected-parent="[[selectedParent]]"></raml-documentation-viewer>
 ```
 
 This element also uses the `<raml-aware>` element. It helps to set RAML data globally for the
@@ -70,11 +78,12 @@ Custom property | Description | Default
     <style>
      :host {
       display: block;
+      @apply(--raml-documentation-viewer);
     }
 
-    raml-summary-view {
+    raml-summary-view,
+    raml-documentation-panel {
       padding: 16px;
-      @apply(--raml-summary-view);
     }
 
     </style>
@@ -84,7 +93,7 @@ Custom property | Description | Default
       <paper-tab>TYPES</paper-tab>
     </paper-tabs> -->
     <!-- <iron-pages selected="{{selectedPage}}"> -->
-      <raml-documentation-panel raml="[[raml]]" selected-path="{{selectedPath}}" has-selection="[[ramlHasSelected]]" narrow="{{narrow}}" narrow-width="{{narrowWidth}}"></raml-documentation-panel>
+      <raml-documentation-panel narrow="[[narrow]]" narrow-width="[[narrowWidth]]" selected-object="[[selectedObject]]" selected-parent="[[selectedParent]]" path="[[path]]"></raml-documentation-panel>
       <!-- <raml-types-viewer raml="[[raml]]"></raml-types-viewer> -->
     <!-- </iron-pages> -->
     <template is="dom-if" if="[[hasAware]]" restamp="true">
@@ -113,6 +122,10 @@ Custom property | Description | Default
         value: false,
         computed: '_computeHasAware(aware)'
       },
+      // An object selected in the `raml-path-selector`
+      selectedObject: Object,
+      // Parent object selected in the `raml-path-selector`
+      selectedParent: Object,
       // // Selected page of the documentation details.
       // selectedPage: {
       //   type: Number,
@@ -129,14 +142,8 @@ Custom property | Description | Default
        * Which means that currently selected item is the 1st method that is located as a
        * 3rd resource definition (from root) and then as a 1st sub-resource in the API definition.
        */
-      selectedPath: {
+      path: {
         type: String,
-        notify: true
-      },
-
-      // Set by the child element. True whem the user selected any of the RAML data.
-      ramlHasSelected: {
-        type:  Boolean,
         notify: true
       },
       /**
