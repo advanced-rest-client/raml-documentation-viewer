@@ -6,17 +6,25 @@
 A documentation viewer for RAML file. This is the main element to be used to display the
 documentation from a RAML file.
 
-*Note: This element do not parse RAML file. It accepts parsed JSON output from the RAML JS parser**
+Note: This element do not parse RAML file. It accepts parsed JSON output from the RAML JS parser*
 
 This element accepts RAML parser's json output. It can be produced using the `<raml-js-parser>`
 element from ARC's catalog.
+
+The computation of the selected object should be performed outside the element.
+Use the `raml-path-selector` with `raml-path-to-object` to get the data
+structure that this element can work with.
 
 ### Example
 Passing a RAML data into the element can be done by using the `raml` property. It's a recommended
 way of passing the data.
 
 ```
-<raml-documentation-viewer raml="[[raml]]"></raml-documentation-viewer>
+<raml-path-to-object selected-object="{{obj}}" ...></raml-path-to-object>
+<raml-documentation-viewer
+  raml="[[raml]]"
+  selected-object="[[obj]]"
+  selected-parent="[[selectedParent]]"></raml-documentation-viewer>
 ```
 
 This element also uses the `<raml-aware>` element. It helps to set RAML data globally for the
