@@ -1,3 +1,21 @@
+<a name="0.1.5"></a>
+## [0.1.5](https://github.com/advanced-rest-client/raml-documentation-viewer/compare/0.1.3...v0.1.5) (2016-12-23)
+
+
+### Breaking
+
+* Updated element to work with new version of the raml-documentation-panel ([e0b9cd52159242b12e75eb1ff3159c4206366dbc](https://github.com/advanced-rest-client/raml-documentation-viewer/commit/e0b9cd52159242b12e75eb1ff3159c4206366dbc))
+
+### Fix
+
+* Fixed version number for the documentation panel ([f225a9efa6c3dc1577275ca3f38d7dd476be778c](https://github.com/advanced-rest-client/raml-documentation-viewer/commit/f225a9efa6c3dc1577275ca3f38d7dd476be778c))
+
+### Update
+
+* removed styling which prohibits theming in parent element ([d687f2afcf328bd02b339da71d95a6b7932e296e](https://github.com/advanced-rest-client/raml-documentation-viewer/commit/d687f2afcf328bd02b339da71d95a6b7932e296e))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/advanced-rest-client/raml-documentation-viewer/compare/0.1.3...v0.1.4) (2016-12-22)
 
