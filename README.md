@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/advanced-rest-client/raml-documentation-viewer.svg?branch=master)](https://travis-ci.org/advanced-rest-client/raml-documentation-viewer)  [![Dependency Status](https://dependencyci.com/github/advanced-rest-client/raml-documentation-viewer/badge)](https://dependencyci.com/github/advanced-rest-client/raml-documentation-viewer)  
+[![Build Status](https://travis-ci.org/advanced-rest-client/raml-documentation-viewer.svg?branch=stage)](https://travis-ci.org/advanced-rest-client/raml-documentation-viewer)  
 
 # raml-documentation-viewer
 
