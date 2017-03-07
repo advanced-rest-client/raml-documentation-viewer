@@ -1,3 +1,13 @@
+<a name="0.1.8"></a>
+## [0.1.8](https://github.com/advanced-rest-client/raml-documentation-viewer/compare/0.1.7...v0.1.8) (2017-03-07)
+
+
+### Breaking
+
+* Deprecating the element. It won't be maitained in the future. Cleaned up the code and removed the summary view ([5d127c1139fd867a745a5d235423aef4009322b7](https://github.com/advanced-rest-client/raml-documentation-viewer/commit/5d127c1139fd867a745a5d235423aef4009322b7))
+
+
+
 <a name="0.1.7"></a>
 ## [0.1.7](https://github.com/advanced-rest-client/raml-documentation-viewer/compare/0.1.3...v0.1.7) (2017-01-16)
 
