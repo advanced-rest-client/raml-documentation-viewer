@@ -17,13 +17,13 @@ raml-documentation-panel
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../raml-aware/raml-aware.html">
 <link rel="import" href="../raml-behaviors/raml-behavior.html">
-<!-- <link rel="import" href="../paper-tabs/paper-tabs.html">
-<link rel="import" href="../paper-tabs/paper-tab.html">
-<link rel="import" href="../iron-pages/iron-pages.html"> -->
-<link rel="import" href="../raml-summary-view/raml-summary-view.html">
 <link rel="import" href="../raml-documentation-panel/raml-documentation-panel.html">
-
 <!--
+## Deprecatin notice
+This element is depricated and it won't be maitained. A way of navigating the
+app has changed and tabbed view is not in the game. Please, use
+`<raml-documentation-panel>` directly.
+
 # `<raml-documentation-viewer>`
 A documentation viewer for RAML file. This is the main element to be used to display the
 documentation from a RAML file.
@@ -81,15 +81,7 @@ Custom property | Description | Default
       @apply(--raml-documentation-viewer);
     }
     </style>
-    <raml-summary-view raml="[[raml]]" narrow="{{narrow}}" narrow-width="{{narrowWidth}}"></raml-summary-view>
-    <!-- <paper-tabs selected="{{selectedPage}}">
-      <paper-tab>DOCUMENTATION</paper-tab>
-      <paper-tab>TYPES</paper-tab>
-    </paper-tabs> -->
-    <!-- <iron-pages selected="{{selectedPage}}"> -->
-      <raml-documentation-panel narrow="[[narrow]]" narrow-width="[[narrowWidth]]" selected-object="[[selectedObject]]" selected-parent="[[selectedParent]]" path="[[path]]"></raml-documentation-panel>
-      <!-- <raml-types-viewer raml="[[raml]]"></raml-types-viewer> -->
-    <!-- </iron-pages> -->
+    <raml-documentation-panel narrow="[[narrow]]" narrow-width="[[narrowWidth]]" selected-object="[[selectedObject]]" selected-parent="[[selectedParent]]" path="[[path]]"></raml-documentation-panel>
     <template is="dom-if" if="[[hasAware]]" restamp="true">
       <raml-aware raml="{{raml}}" scope="[[aware]]"></raml-aware>
     </template>
@@ -120,11 +112,6 @@ Custom property | Description | Default
       selectedObject: Object,
       // Parent object selected in the `raml-path-selector`
       selectedParent: Object,
-      // // Selected page of the documentation details.
-      // selectedPage: {
-      //   type: Number,
-      //   value: 0
-      // },
       /**
        * Selected path for the documentation panel and for the api structure viewer.
        * It's a path in the JSON structure to the method / endpoint.
