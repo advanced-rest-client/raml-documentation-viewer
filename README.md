@@ -2,6 +2,11 @@
 
 # raml-documentation-viewer
 
+## Deprecatin notice
+This element is depricated and it won't be maitained. A way of navigating the
+app has changed and tabbed view is not in the game. Please, use
+`<raml-documentation-panel>` directly.
+
 # `<raml-documentation-viewer>`
 A documentation viewer for RAML file. This is the main element to be used to display the
 documentation from a RAML file.
